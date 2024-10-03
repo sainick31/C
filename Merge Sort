@@ -1,47 +1,25 @@
 #include <iostream>
 using namespace std;
 
-void merge(int arr[], int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    int L[n1], R[n2];
-
-    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
-    for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
-
-    int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) arr[k++] = L[i++];
-        else arr[k++] = R[j++];
-    }
-
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
-}
-
-void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
-}
-
 int main() {
-    int arr1[] = {3, 8, 5};
-    int arr2[] = {2, 7, 4};
-    int n1 = sizeof(arr1) / sizeof(arr1[0]);
-    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    const int SIZE1 = 5; // Size of the first array
+    const int SIZE2 = 3; // Size of the second array
 
-    int arr[n1 + n2];
-    for (int i = 0; i < n1; i++) arr[i] = arr1[i];
-    for (int i = 0; i < n2; i++) arr[n1 + i] = arr2[i];
-
-    mergeSort(arr, 0, n1 + n2 - 1);
-
-    cout << "Sorted merged array: ";
-    for (int i = 0; i < n1 + n2; i++) cout << arr[i] << " ";
+    int arr1[SIZE1] = {1, 2, 3, 4, 5}; 
+    int arr2[SIZE2] = {6, 7, 8};    
+    int mergedSize = SIZE1 + SIZE2; 
+    int mergedArray[mergedSize]; 
+    for (int i = 0; i < SIZE1; ++i) {
+        mergedArray[i] = arr1[i];
+    }
+    for (int i = 0; i < SIZE2; ++i) {
+        mergedArray[SIZE1 + i] = arr2[i];
+    }
+    cout << "Merged array: ";
+    for (int i = 0; i < mergedSize; ++i) {
+        cout << mergedArray[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
