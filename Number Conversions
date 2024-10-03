@@ -1,0 +1,19 @@
+#include<iostream>
+#include<bitset>
+#include<sstream>
+#include<string>
+using namespace std;
+int main(){
+	string o;
+	cout<<"Enter the oct number";
+	cin>>o;
+	unsigned long d;
+	stringstream s;
+	s<<oct<<o;
+	s>>d;
+	bitset<16> b(d);
+	cout<<"Binary "<<b<<endl;
+	cout<<"Decimal "<<d<<endl;
+	cout<<"Octal "<<oct<<d<<endl;
+	cout<<"Hexa "<<hex<<d<<endl;
+}
